@@ -44,7 +44,9 @@ class RedditSearch extends Component {
                     onChange={this.handleChange}/>
                 <label for="searchFormLimit">Max Results:</label> 
                 <input
-                    type="text"
+                    type="number"
+                    min="1"
+                    max="100"
                     name="searchFormLimit"
                     value={this.state.searchFormLimit} 
                     onChange={this.handleChange}/>
