@@ -22,7 +22,7 @@ class RedditSearch extends Component {
         superagent.get(url)
         .then( res => {
             this.setState({errorClass: '' })
-            this.props.onSearch( res.body.results);
+            this.props.onSearch(res.body.data.children);
         })
         .catch( error => {
             console.error(error);
@@ -36,16 +36,17 @@ class RedditSearch extends Component {
         return (
             <div className="reddit-search">
                 <form className={this.state.errorClass} onSubmit={this.handleSubmit}>
-                    <select name="category" value={this.state.category} onChange={this.handleChange}>
-                    <option value="beer">Beer</option>
-                    <option value="food">Food</option>
-                    <option value="movies">Movies</option>
-                    <option value="python">Python</option>
-                    </select>
+                <label for="searchFormBoard">Search:</label>    
                 <input
                     type="text"
-                    name="searchName"
-                    value={this.state.searchName} 
+                    name="searchFormBoard"
+                    value={this.state.searchFormBoard} 
+                    onChange={this.handleChange}/>
+                <label for="searchFormLimit">Max Results:</label> 
+                <input
+                    type="text"
+                    name="searchFormLimit"
+                    value={this.state.searchFormLimit} 
                     onChange={this.handleChange}/>
 
                     <button type="submit">Search</button>
